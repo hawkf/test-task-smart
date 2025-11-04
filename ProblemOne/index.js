@@ -56,14 +56,12 @@ var arr = [
 ];
 
 function mutateArray(a) {
-    return a.map(item => {
+    return a.map(({guest_booking, ...rest}) => {
       const formattedItem =  {
-        ...item,
-        room_no: item.guest_booking.room_no,
-        some_array: item.guest_booking.some_array
+        ...rest,
+        room_no: guest_booking.room_no,
+        some_total: guest_booking.some_array.reduce((acc, number) => acc + number, 0)
       }
-
-      delete formattedItem.guest_booking
 
       return formattedItem
     })
