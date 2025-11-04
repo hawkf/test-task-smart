@@ -56,7 +56,7 @@ var arr = [
 ];
 
 function mutateArray(a) {
-    return a.map(({guest_booking, ...rest}) => {
+    return a.filter(item => item.guest_type === 'guest').map(({guest_booking, ...rest}) => {
       const formattedItem =  {
         ...rest,
         room_no: guest_booking.room_no,
