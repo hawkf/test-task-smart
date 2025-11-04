@@ -64,7 +64,12 @@ function mutateArray(a) {
       }
 
       return formattedItem
-    })
+    }).sort((a, b) => {
+      const lastCompare = a.last_name.localeCompare(b.last_name);
+      if (lastCompare !== 0) return lastCompare;
+
+      return a.first_name.localeCompare(b.first_name);
+    });
 }
 
 $(document).ready(function() {
